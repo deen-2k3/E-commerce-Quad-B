@@ -32,7 +32,10 @@ const userSchema = new mongoose.Schema({
     cart:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Product'
-    }]
+    }],
+    token:{
+        type:String
+    }
 
 
 }, { timestamps: true })

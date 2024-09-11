@@ -32,6 +32,7 @@ const productSchema=new mongoose.Schema({
     },
     category:{
         type:String,
+        enum:["Living Room","Bedroom","Kitchen"],
         required:true
     },
     ratingAndReviews:[
