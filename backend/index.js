@@ -2,7 +2,7 @@ const express = require("express");
 
 const authrouter = require("./routes/auth.route.js");
 const productRouter = require("./routes/products.route.js");
-
+const cartRouter=require('./routes/cart.route.js');
 const app = express();
 
 const database = require("./config/database");
@@ -32,6 +32,8 @@ cloudinaryConnect();
 //api calls
 app.use("/api/v1/auth", authrouter);
 app.use("/api/v1/product", productRouter);
+app.use("/api/v1/cart", cartRouter);
+
 
 app.get("/", (req, res) => {
   return res.json({

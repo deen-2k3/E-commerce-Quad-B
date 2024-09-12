@@ -100,3 +100,81 @@ exports.createProduct = async (req, res) => {
     });
   }
 };
+ 
+
+exports.getAllProduct=async(req,res)=>{
+  try {
+    const allProduct=await Product.find({});
+    // console.log(allProduct);
+     return res.status(201).json({
+      message:"All product get successfully.",
+      success:true,
+      allProduct
+     })
+    
+  } catch (error) {
+    return res.status(500).json({
+      success:false,
+      message:"Internal server error."
+    })
+  }
+}
+
+exports.getCategoryProduct=async(req,res)=>{
+  try {
+    const {category}=req.body;
+    const response = await Product.find({ category: category });
+    console.log(response)
+    return res.status(201).json({
+      message:"All product get successfully.",
+      success:true,
+      response
+     });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success:false,
+      message:"Internal server error."
+  })
+}
+}
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    // Check if productId is provided
+    if (!productId) {
+      return res.status(401).json({
+        message: "Product ID is required.",
+        success: false
+      });
+    }
+
+    // Attempt to delete the product by ID
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+
+    // If the product is not found
+    if (!deletedProduct) {
+      return res.status(404).json({
+        message: "Product not found.",
+        success: false
+      });
+    }
+
+    // If the product is deleted successfully
+    res.status(200).json({
+      message: "Product deleted successfully.",
+      success: true,
+      data: deletedProduct
+    });
+    
+  } catch (error) {
+    // Handle any errors that occur
+    res.status(500).json({
+      message: "An error occurred while deleting the product.",
+      success: false,
+      error: error.message
+    });
+  }
+};
