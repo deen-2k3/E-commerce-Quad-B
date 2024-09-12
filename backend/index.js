@@ -1,5 +1,9 @@
 const express = require("express");
-const authrouter=require("./routes/auth.route.js")
+
+
+
+const authrouter=require("./routes/auth.route.js");
+const productRouter=require("./routes/products.route.js");
 
 const app = express();
 
@@ -21,6 +25,9 @@ app.use(cors());
 
 //api calls
 app.use("/api/v1/auth",authrouter);
+app.use("/api/v1/product",productRouter);
+
+
 app.get("/", (req, res) => {
   return res.json({
     success: true,

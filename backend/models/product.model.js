@@ -26,6 +26,12 @@ const productSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'',
     },
+    productImages:[
+        {
+         type:String,
+
+        }
+    ],
     availability:{
         type:Number,
         required:true
@@ -46,4 +52,4 @@ const productSchema=new mongoose.Schema({
     
 })
 
-export const Product=mongoose.model('Product',productSchema);
+module.exports=mongoose.model('Product',productSchema);
