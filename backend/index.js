@@ -4,6 +4,7 @@ const authrouter = require("./routes/auth.route.js");
 const productRouter = require("./routes/products.route.js");
 const cartRouter=require('./routes/cart.route.js');
 const app = express();
+const cookieParser=require("cookie-parser");
 
 const database = require("./config/database");
 const fileUpload = require("express-fileupload");
@@ -21,6 +22,7 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 app.use(
   fileUpload({
     useTempFiles: true, // To allow temporary file storage before processing
