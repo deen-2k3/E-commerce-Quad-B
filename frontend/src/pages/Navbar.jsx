@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <div
-      className={`flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700`}
+      className={` w-full mx-auto flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700`}
     >
       <div className="flex w-[96%] md:w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
@@ -16,11 +16,25 @@ function Navbar() {
         </Link>
 
         <nav className="">
-          <ul className="flex md:gap-x-6 text-richblack-25">
-            <Link to={"/"} className="w-[38px] h-[24px] text-sm	leading-6 font-medium text-black">Home</Link>
-            <Link>Shop</Link>
-            <Link>Product</Link>
-            <Link>Contact Us</Link>
+          <ul className=" w-full flex md:gap-x-6 text-richblack-25">
+            <Link
+              to={"/"}
+              className=" h-[24px] text-sm	leading-6 font-medium text-gray-900	"
+            >
+              Home
+            </Link>
+            <Link
+              to={"/"}
+              className=" h-[24px] text-sm	leading-6 font-medium text-gray-900	"
+            >
+              Shop
+            </Link>
+            <Link className=" h-[24px] text-sm	leading-6 font-medium text-gray-900	">
+              Product
+            </Link>
+            <Link className=" h-[24px] text-sm leading-6 font-medium text-gray-900	">
+              Contact Us
+            </Link>
           </ul>
         </nav>
 
