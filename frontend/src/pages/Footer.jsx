@@ -17,11 +17,21 @@ function Footer() {
             <p>Gift & Decoration Store</p>
           </div>
           <div className="flex gap-7">
-            <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/product">Product</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/contact-us">Contact Us</Link>
+            <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+              Home
+            </Link>
+            <Link to="/shop" onClick={() => window.scrollTo(0, 0)}>
+              Shop
+            </Link>
+            <Link to="/product" onClick={() => window.scrollTo(0, 0)}>
+              Product
+            </Link>
+            <Link to="/blog" onClick={() => window.scrollTo(0, 0)}>
+              Blog
+            </Link>
+            <Link to="/contact-us" onClick={() => window.scrollTo(0, 0)}>
+              Contact Us
+            </Link>
           </div>
         </div>
 
