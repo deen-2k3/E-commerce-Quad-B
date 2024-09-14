@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { BsMinecart } from "react-icons/bs";
-import { FaRegUserCircle } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
-function Navbar() {
+function Navbar({ user }) {
+  const [search, setSearch] = useState(true);
+  console.log("nav", user);
   return (
     <div
       className={` w-[87%] mx-auto flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700`}
@@ -47,24 +49,41 @@ function Navbar() {
           </ul>
         </nav>
 
-        {/* <div className="items-center gap-x-2 flex">
-          <Link to="/login">
-            <button className="hidden md:block rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
-              Log in
-            </button>
-          </Link>
-          <Link to="/signup">
-            <button className="hidden md:block rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
-              Sign up
-            </button>
-          </Link>
-        </div> */}
-
-        <div className="flex gap-7 justify-center">
-          <CiSearch size={20} />
-          <BsMinecart size={20} />
-          <FaRegUserCircle size={20} />
-        </div>
+        {!user ? (
+          <div className="items-center gap-x-2 flex">
+            <Link to="/login">
+              <button className="hidden md:block rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+                Log in
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button className="hidden md:block rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+                Sign up
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div className="flex gap-7 justify-center">
+            {search ? (
+              <div className="flex items-center justify-center">
+                <input
+                  type="text"
+                  className=" outline-none"
+                  placeholder="Search...."
+                />{" "}
+                <RxCross2 size={20} onClick={() => setSearch(!search)} />
+              </div>
+            ) : (
+              <CiSearch size={20} onClick={() => setSearch(!search)} />
+            )}
+            <BsMinecart size={20} />
+            <img
+              src={user.profilePhoto}
+              alt=""
+              className="w-[25px] h-[25px] rounded-full"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

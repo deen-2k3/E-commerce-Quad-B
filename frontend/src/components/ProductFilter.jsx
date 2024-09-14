@@ -11,6 +11,8 @@ const ProductFilter = () => {
           </p>
           <select className="flex flex-col items-center justify-center appearance-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm leading-5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-semibold">
             <option className="">Living Room</option>
+            <option className="">Bedroom</option>
+            <option className="">Kitchen</option>
           </select>
           <ChevronDown
             className=" absolute right-3 top-[50px] transform -translate-y-1/2 text-gray-400 pointer-events-none"

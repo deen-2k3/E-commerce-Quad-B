@@ -2,44 +2,44 @@ import React, { useState } from "react";
 import ImageLogo from "../assets/login.jpg";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { apiConnector } from "../services/apiConnector";
 import { loginUrl } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ setUser }) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const [data,setData]=useState({
-    email:"",
-    password:"",
+  const [data, setData] = useState({
+    email: "",
+    password: "",
   });
 
-  const navigate=useNavigate();
-  const submitHandler=async(event)=>{
+  const navigate = useNavigate();
+  const submitHandler = async (event) => {
     event.preventDefault();
-    const loading=toast.loading("Loading");
+    const loading = toast.loading("Loading");
 
     try {
-      const res = await apiConnector("POST",loginUrl,data);
-      console.log(res);
+      const res = await apiConnector("POST", loginUrl, data);
+      localStorage.setItem("person", JSON.stringify(res?.data?.user));
+      setUser(res.data.user);
+      console.log(res.data.user);
       toast.success(res.data.message);
-      navigate("/")
+      navigate("/");
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
     }
     toast.dismiss(loading);
-  }
+  };
 
-  const onChangeHandler=(event)=>{
-      setData({
-        ...data,
-        [event.target.name]:event.target.value
-      })
-  }
-
-
+  const onChangeHandler = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   return (
     <div className="flex items-center gap-32  w-screen h-screen overflow-hidden">
