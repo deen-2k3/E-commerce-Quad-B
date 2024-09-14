@@ -4,6 +4,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./pages/Navbar";
+import ShopPage from "./pages/ShopPage";
 import SignUp from "./pages/SignUp";
 import { Route, Routes } from "react-router-dom";
 
@@ -17,8 +18,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/shop" element={<ShopPage />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
