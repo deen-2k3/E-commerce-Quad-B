@@ -1,11 +1,47 @@
 import React, { useState } from "react";
 import ImageLogo from "../assets/login.jpg";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast";
+import { forgotPasswordUrl } from "../services/apis";
+import { apiConnector } from "../services/apiConnector";
+
 
 function ForgotPassword() {
   const [showPassword, setShowPassword] = useState(false);
   const [showCPassword, setShowCPassword] = useState(false);
+
+  const [data,setData]=useState({
+    email:"",
+    password:"",
+    confirmPassword:""
+  })
+
+  const navigate=useNavigate();
+
+  const onChangeHandler=(event)=>{
+    setData({
+      ...data,
+      [event.target.name]:event.target.value
+    })
+  }
+
+  const submitHandler=async(event)=>{
+    event.preventDefault();
+    if(data.password!==data.confirmPassword){
+      toast.error("Password does not matched.")
+      return ;
+    }
+    const loading=toast.loading("Loading");
+    try {
+      const res=await apiConnector("POST",forgotPasswordUrl,data);
+      toast.success(res.data.message);
+      navigate("/login")
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+    toast.dismiss(loading);
+  }
 
   return (
     <div className="flex items-center gap-32  w-screen h-screen overflow-hidden">
@@ -18,11 +54,14 @@ function ForgotPassword() {
           Forgot Password
         </h1>
 
-        <form className="flex flex-col gap-5">
+        <form className="flex flex-col gap-5" onSubmit={submitHandler}>
           <div className="mb-4 ">
             <input
               type="email"
               id="email"
+              name="email"
+              value={data.email}
+              onChange={onChangeHandler}
               className="border-b-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Email address "
               required
@@ -31,6 +70,10 @@ function ForgotPassword() {
           <div className="mb-4">
             <input
               type={showPassword ? "text" : "password"}
+              name="password"
+              value={data.password}
+              onChange={onChangeHandler}
+
               id="password"
               className="border-b-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder=" Password"
@@ -41,6 +84,9 @@ function ForgotPassword() {
           <div className="mb-4">
             <input
               type={showCPassword ? "text" : "password"}
+              name="confirmPassword"
+              value={data.confirmPassword}
+              onChange={onChangeHandler}
               id="password"
               className="border-b-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Confirm Password"

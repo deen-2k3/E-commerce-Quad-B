@@ -2,9 +2,44 @@ import React, { useState } from "react";
 import ImageLogo from "../assets/login.jpg";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import {toast} from "react-hot-toast";
+import { apiConnector } from "../services/apiConnector";
+import { loginUrl } from "../services/apis";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+
+  const [data,setData]=useState({
+    email:"",
+    password:"",
+  });
+
+  const navigate=useNavigate();
+  const submitHandler=async(event)=>{
+    event.preventDefault();
+    const loading=toast.loading("Loading");
+
+    try {
+      const res = await apiConnector("POST",loginUrl,data);
+      console.log(res);
+      toast.success(res.data.message);
+      navigate("/")
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+    toast.dismiss(loading);
+  }
+
+  const onChangeHandler=(event)=>{
+      setData({
+        ...data,
+        [event.target.name]:event.target.value
+      })
+  }
+
+
 
   return (
     <div className="flex items-center gap-32  w-screen h-screen overflow-hidden">
@@ -28,11 +63,14 @@ function Login() {
           </p>
         </div>
 
-        <form className="flex flex-col gap-5">
+        <form className="flex flex-col gap-5" onSubmit={submitHandler}>
           <div className="mb-4 ">
             <input
               type="email"
               id="email"
+              name="email"
+              value={data.email}
+              onChange={onChangeHandler}
               className="border-b-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Email address "
               required
@@ -40,6 +78,9 @@ function Login() {
           </div>
           <div className="mb-4">
             <input
+              name="password"
+              value={data.password}
+              onChange={onChangeHandler}
               type={showPassword ? "text" : "password"}
               id="password"
               className="border-b-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
