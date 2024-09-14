@@ -1,6 +1,7 @@
 const Product = require("../models/product.model");
 const { uploadImageToCloudinary } = require("../utils/imageUploader"); // Assuming you have a function for image upload
 const cloudinary = require("cloudinary").v2; // Ensure Cloudinary is configured
+// Controller to create a new product
 
 exports.createProduct = async (req, res) => {
   try {
@@ -15,6 +16,7 @@ exports.createProduct = async (req, res) => {
     } = req.body;
 
     console.log(productTitle);
+    // Check if all required fields are provided
 
     if (
       !productTitle ||
@@ -30,6 +32,7 @@ exports.createProduct = async (req, res) => {
         message: "All fields are required.",
       });
     }
+    // Check if at least one image file is uploaded
 
     if (!req.files || !req.files) {
       return res.status(400).json({
@@ -37,6 +40,8 @@ exports.createProduct = async (req, res) => {
         message: "No image file uploaded.",
       });
     }
+    // Array to hold URLs of uploaded images
+
     let arr = [];
     const img1 = await uploadImageToCloudinary(
       req.files.image,
@@ -86,6 +91,7 @@ exports.createProduct = async (req, res) => {
       category,
       productImages: arr,
     });
+    // Respond with success and product details
 
     return res.status(201).json({
       message: "Product created successfully",
@@ -100,44 +106,48 @@ exports.createProduct = async (req, res) => {
     });
   }
 };
- 
 
-exports.getAllProduct=async(req,res)=>{
+// Controller to get all products
+
+exports.getAllProduct = async (req, res) => {
   try {
-    const allProduct=await Product.find({});
+    const allProduct = await Product.find({});
     // console.log(allProduct);
-     return res.status(201).json({
-      message:"All product get successfully.",
-      success:true,
-      allProduct
-     })
-    
+    return res.status(201).json({
+      message: "All product get successfully.",
+      success: true,
+      allProduct,
+    });
   } catch (error) {
     return res.status(500).json({
-      success:false,
-      message:"Internal server error."
-    })
+      success: false,
+      message: "Internal server error.",
+    });
   }
-}
+};
+// Controller to get products by category
 
-exports.getCategoryProduct=async(req,res)=>{
+exports.getCategoryProduct = async (req, res) => {
   try {
-    const {category}=req.body;
+    const { category } = req.body;
+    // Find products by category
+
     const response = await Product.find({ category: category });
-    console.log(response)
+    console.log(response);
     return res.status(201).json({
-      message:"All product get successfully.",
-      success:true,
-      response
-     });
+      message: "All product get successfully.",
+      success: true,
+      response,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      success:false,
-      message:"Internal server error."
-  })
-}
-}
+      success: false,
+      message: "Internal server error.",
+    });
+  }
+};
+// Controller to delete a product
 
 exports.deleteProduct = async (req, res) => {
   try {
@@ -147,7 +157,7 @@ exports.deleteProduct = async (req, res) => {
     if (!productId) {
       return res.status(401).json({
         message: "Product ID is required.",
-        success: false
+        success: false,
       });
     }
 
@@ -158,7 +168,7 @@ exports.deleteProduct = async (req, res) => {
     if (!deletedProduct) {
       return res.status(404).json({
         message: "Product not found.",
-        success: false
+        success: false,
       });
     }
 
@@ -166,15 +176,14 @@ exports.deleteProduct = async (req, res) => {
     res.status(200).json({
       message: "Product deleted successfully.",
       success: true,
-      data: deletedProduct
+      data: deletedProduct,
     });
-    
   } catch (error) {
     // Handle any errors that occur
     res.status(500).json({
       message: "An error occurred while deleting the product.",
       success: false,
-      error: error.message
+      error: error.message,
     });
   }
 };

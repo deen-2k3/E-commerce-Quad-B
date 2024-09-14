@@ -24,7 +24,7 @@ exports.addToCart = async (req, res) => {
         message:"user not found."
       })
     }
-
+   //finding the product using product id
     const product=await Product.findOne({_id:productId});
 
 
