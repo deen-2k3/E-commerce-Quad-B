@@ -51,11 +51,8 @@ function ShopPage() {
         <Card />
         <Card />
       </div>
-      <div className="w-[163px] h-[40px] rounded-full border-solid border-2 border-zinc-900 mx-auto mt-5 flex justify-center items-center">
+      <div className="w-[163px] h-[40px] rounded-full border-solid border-2 mb-16 border-zinc-900 mx-auto mt-5 flex justify-center items-center">
         <Link to={"/product"}>Show more</Link>
-      </div>
-      <div className="mt-28">
-        <NewsLetter />
       </div>
     </div>
   );

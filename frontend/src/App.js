@@ -9,6 +9,8 @@ import ShopPage from "./pages/ShopPage";
 import SignUp from "./pages/SignUp";
 import ContactUsPage from "./components/contactUs/ContactUsPage";
 import { Route, Routes } from "react-router-dom";
+import Products from "./pages/Products";
+import NewsLetter from "./components/NewsLetter";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,7 +33,11 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
+        <Route path="/product" element={<Products />} />
+
+
       </Routes>
+      <NewsLetter/>
       <Footer />
     </div>
   );

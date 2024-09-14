@@ -98,7 +98,6 @@ function Home() {
       </div>
 
       <BannerPage />
-      <NewsLetter />
     </div>
   );
 }
