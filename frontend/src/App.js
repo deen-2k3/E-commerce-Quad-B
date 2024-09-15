@@ -11,6 +11,7 @@ import ContactUsPage from "./components/contactUs/ContactUsPage";
 import { Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
 import NewsLetter from "./components/NewsLetter";
+import AddProduct from "./components/Admin/AddProduct";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -51,6 +52,7 @@ function App() {
         />
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/product" element={<Products />} />
+        <Route path="/addproduct" element={<AddProduct />} />
       </Routes>
       <NewsLetter />
       <Footer />
