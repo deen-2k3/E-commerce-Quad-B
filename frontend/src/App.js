@@ -10,9 +10,14 @@ import SignUp from "./pages/SignUp";
 import ContactUsPage from "./components/contactUs/ContactUsPage";
 import { Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
-import AddProdduct from "./components/admin/AddProduct"
+import AddProdduct from "./components/admin/AddProduct";
 import NewsLetter from "./components/NewsLetter";
 import { apiConnector } from "./services/apiConnector";
+import { getAllProduct } from "./services/apis";
+import Cart from "./pages/Cart";
+import CheckOut from "./pages/CheckOut";
+import NavCart from "./components/NavCart";
+import Complete from "./components/Complete";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -54,7 +59,10 @@ function App() {
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/product" element={<Products />} />
         <Route path="/addproduct" element={<AddProdduct />} />
-
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/navcart" element={<NavCart />} />
+        <Route path="/complete" element={<Complete />} />
       </Routes>
       <NewsLetter />
       <Footer />
