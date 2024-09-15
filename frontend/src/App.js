@@ -13,6 +13,7 @@ import Products from "./pages/Products";
 import AddProdduct from "./components/admin/AddProduct"
 import NewsLetter from "./components/NewsLetter";
 import { apiConnector } from "./services/apiConnector";
+import { getAllProduct } from "./services/apis";
 
 function App() {
   const [user, setUser] = useState(null);
