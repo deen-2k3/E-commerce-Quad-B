@@ -11,9 +11,6 @@ import ContactUsPage from "./components/contactUs/ContactUsPage";
 import { Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
 import NewsLetter from "./components/NewsLetter";
-import { getAllProduct } from "./services/apis";
-import { apiConnector } from "./services/apiConnector";
-import AddProduct from "./components/admin/AddProduct";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -54,7 +51,8 @@ function App() {
         />
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/product" element={<Products />} />
-        <Route path="/addproduct" element={<AddProduct />} />
+
+
       </Routes>
       <NewsLetter />
       <Footer />
