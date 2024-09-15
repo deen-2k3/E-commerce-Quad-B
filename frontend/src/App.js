@@ -14,6 +14,7 @@ import NewsLetter from "./components/NewsLetter";
 import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
 import NavCart from "./components/NavCart";
+import Complete from "./components/Complete";
 function App() {
   const [user, setUser] = useState(null);
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckOut/>} />
         <Route path="/navcart" element={<NavCart/>} />
+        <Route path="/complete" element={<Complete/>} />
       </Routes>
       <NewsLetter/>
       <Footer />
