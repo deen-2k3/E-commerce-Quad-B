@@ -11,7 +11,9 @@ import ContactUsPage from "./components/contactUs/ContactUsPage";
 import { Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
 import NewsLetter from "./components/NewsLetter";
-
+import Cart from "./pages/Cart";
+import CheckOut from "./pages/CheckOut";
+import NavCart from "./components/NavCart";
 function App() {
   const [user, setUser] = useState(null);
 
@@ -34,8 +36,9 @@ function App() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/product" element={<Products />} />
-
-
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckOut/>} />
+        <Route path="/navcart" element={<NavCart/>} />
       </Routes>
       <NewsLetter/>
       <Footer />
