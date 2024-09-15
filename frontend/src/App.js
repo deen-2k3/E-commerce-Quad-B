@@ -38,7 +38,7 @@ function App() {
   };
 
   return (
-    <div className="overflow-x-hidden" >
+    <div className="overflow-x-hidden">
       <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home products={products} />} />
@@ -51,8 +51,6 @@ function App() {
         />
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/product" element={<Products />} />
-
-
       </Routes>
       <NewsLetter />
       <Footer />
