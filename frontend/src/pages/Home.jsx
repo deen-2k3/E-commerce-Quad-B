@@ -1,6 +1,5 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React from "react";
 import Slider from "react-slick";
 import Banner1 from "../assets/Banner/Banner.svg";
 import CategoryProduct from "../components/CategoryProduct";
@@ -12,9 +11,7 @@ import { PiMoneyLight } from "react-icons/pi";
 import { SlLock } from "react-icons/sl";
 import { IoCallOutline } from "react-icons/io5";
 import BannerPage from "../components/BannerPage";
-import NewsLetter from "../components/NewsLetter";
-
-function Home() {
+function Home({ products }) {
   var settings = {
     dots: true,
     infinite: true,
@@ -22,6 +19,7 @@ function Home() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <div className=" mx-auto mt-6 items-center">
       <Slider {...settings}>
@@ -71,7 +69,7 @@ function Home() {
         </div>
       </div>
 
-      <Cards />
+      <Cards products={products} />
 
       {/* service  */}
       <div className=" flex gap-[20px] ml-36">

@@ -1,7 +1,9 @@
 import React from "react";
 import { ChevronDown, Grid, LayoutGrid, List, Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ProductFilter = () => {
+  const navigate=useNavigate();
   return (
     <div className="flex w-[77%] mx-auto items-center justify-between p-4 bg-white border-b border-gray-200 mt-10">
       <div className="flex space-x-4">
@@ -9,10 +11,11 @@ const ProductFilter = () => {
           <p className=" w-[102px] h-[26px] font-semibold text-base leading-6 text-gray-500">
             CATEGORIES
           </p>
-          <select className="flex flex-col items-center justify-center appearance-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm leading-5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-semibold">
-            <option className="">Living Room</option>
-            <option className="">Bedroom</option>
-            <option className="">Kitchen</option>
+          <select className="flex flex-col items-center justify-center appearance-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm leading-5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-semibold" onChange={(e)=>navigate(`/shop/product/${e.target.value}`)}>
+            <option className="" value="allproduct">All Product</option>
+            <option className="" value="living-room">Living Room</option>
+            <option className="" value='bedroom'>Bedroom</option>
+            <option className="" value='kitchen'>Kitchen</option>
           </select>
           <ChevronDown
             className=" absolute right-3 top-[50px] transform -translate-y-1/2 text-gray-400 pointer-events-none"

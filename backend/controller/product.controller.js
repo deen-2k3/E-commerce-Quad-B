@@ -15,7 +15,7 @@ exports.createProduct = async (req, res) => {
       category,
     } = req.body;
 
-    console.log(productTitle);
+    //console.log("heloo......",productTitle);
     // Check if all required fields are provided
 
     if (
@@ -33,8 +33,9 @@ exports.createProduct = async (req, res) => {
       });
     }
     // Check if at least one image file is uploaded
+    console.log("filee.................", req.files);
 
-    if (!req.files || !req.files) {
+    if (!req.files) {
       return res.status(400).json({
         success: false,
         message: "No image file uploaded.",
@@ -121,7 +122,7 @@ exports.getAllProduct = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Internal server error.",
+      message: " server error can not add product please try again..",
     });
   }
 };

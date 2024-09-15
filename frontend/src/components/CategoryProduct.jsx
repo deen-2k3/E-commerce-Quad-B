@@ -16,7 +16,7 @@ const CategoryProduct = () => {
             Living Room
           </h2>
           <div className="flex items-center gap-2 ">
-            <Link>Shop Now </Link>
+            <Link to="/shop/product/living-room">Shop Now </Link>
             <span className=" mr-auto">
               <FaArrowRight />
             </span>
@@ -32,7 +32,7 @@ const CategoryProduct = () => {
               Bedroom
             </h2>
             <div className="flex items-center gap-2 ">
-              <Link>Shop Now </Link>
+              <Link to="/shop/product/bedroom">Shop Now </Link>
               <span className=" mr-auto">
                 <FaArrowRight />
               </span>
@@ -47,7 +47,7 @@ const CategoryProduct = () => {
               Kitchen
             </h2>
             <div className="flex items-center gap-2 ">
-              <Link>Shop Now </Link>
+              <Link to="/shop/product/kitchen">Shop Now </Link>
               <span className=" mr-auto">
                 <FaArrowRight />
               </span>

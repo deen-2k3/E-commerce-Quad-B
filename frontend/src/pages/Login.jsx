@@ -24,7 +24,6 @@ function Login({ setUser }) {
       const res = await apiConnector("POST", loginUrl, data);
       localStorage.setItem("person", JSON.stringify(res?.data?.user));
       setUser(res.data.user);
-      console.log(res.data.user);
       toast.success(res.data.message);
       navigate("/");
     } catch (error) {

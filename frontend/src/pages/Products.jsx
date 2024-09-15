@@ -49,7 +49,7 @@ const Products = () => {
       </div>
 
       <div className="flex gap-24">
-        <div className="">
+        <div className=" w-[548px]">
           <div className="flex gap-4 mb-4">
             <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
             <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
@@ -59,8 +59,7 @@ const Products = () => {
             <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
           </div>
           <div className="flex gap-4 mb-4">
-            <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
-            <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
+            <img src={Image} alt="" className="min-w-[548px] max-h-[349px]" />
           </div>
         </div>
 

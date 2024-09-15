@@ -1,24 +1,14 @@
-import React from 'react'
-import Card from './Card'
+import React from "react";
+import Card from "./Card";
 
-const Cards = () => {
+const Cards = ({ products }) => {
   return (
-    <div className='flex mt-7 ml-36 gap-2 overflow-y-hidden mx-auto'>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+    <div className="flex mt-7 ml-36 gap-2 overflow-y-hidden mx-auto">
+      {products?.map((product) => {
+        return <Card product={product} key={product._id} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default Cards
+export default Cards;
