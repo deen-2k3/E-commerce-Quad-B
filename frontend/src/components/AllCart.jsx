@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import black from "../assets/Cart/black.svg";
 import red from "../assets/Cart/red.svg";
 import lamp from "../assets/Cart/lamp.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AllCart = () => {
     const [count, setCount] = useState(1);
+    const navigate = useNavigate();
   return (
     <div>
       <div className="ml-72 flex  mb-64">
@@ -195,6 +196,7 @@ const AllCart = () => {
               <button
                 type="submit"
                 className="bg-slate-950 hover:bg-slate-800 text-white font-bold py-2 mt-5 px-4 rounded-lg focus:outline-none focus:shadow-outline w-[365px] ml-4 h-[52px]"
+                onClick={()=>navigate("/checkout-details")}
               >
                 Checkout
               </button>

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Image from "../assets/category/p1.svg";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import { GoHeartFill, GoHeart } from "react-icons/go";
 import { FaArrowRight } from "react-icons/fa6";
 import Cards from "../components/Cards";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../slices/cartSlice";
 const firstExample = {
   size: 20,
   edit: false,
@@ -34,32 +35,67 @@ const color = {
   },
 };
 
-const Products = () => {
+const Products = ({ products }) => {
   const [chooseColor, setChooseColor] = useState("Red");
   const [count, setCount] = useState(1);
   const [heart, SetHeart] = useState(false);
+  const { productId } = useParams();
+  const [productData, setProductData] = useState(null);
+
+  useEffect(() => {
+    const filteredData = products.filter(
+      (product) => productId === product._id
+    );
+    setProductData(filteredData[0]); // Assuming productId is unique
+  }, [products, productId]);
+
+  console.log("productData", productData);
+
+  const dispatch = useDispatch();
 
   return (
     <div className=" w-10/12 mx-auto  ">
       <div className="flex  gap-3 my-4  text-gray-400">
         <Link to={"/"}>Home {">"}</Link>
         <Link to={"/shop"}>Shop {">"}</Link>
-        <Link to={"/"}>Living Room {">"}</Link>
+        <Link to={`/shop/product`}>
+          {productData?.category} {">"}
+        </Link>
         <p className="text-black font-medium leading-6 ">Products </p>
       </div>
 
       <div className="flex gap-24">
         <div className=" w-[548px]">
           <div className="flex gap-4 mb-4">
-            <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
-            <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
+            <img
+              src={productData?.productImages[0]}
+              alt=""
+              className="max-w-[262px] max-h-[349px]"
+            />
+            <img
+              src={productData?.productImages[1]}
+              alt=""
+              className="max-w-[262px] max-h-[349px]"
+            />
           </div>
           <div className="flex gap-4 mb-4">
-            <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
-            <img src={Image} alt="" className="max-w-[262px] max-h-[349px]" />
+            <img
+              src={productData?.productImages[2]}
+              alt=""
+              className="max-w-[262px] max-h-[349px]"
+            />
+            <img
+              src={productData?.productImages[3]}
+              alt=""
+              className="max-w-[262px] max-h-[349px]"
+            />
           </div>
           <div className="flex gap-4 mb-4">
-            <img src={Image} alt="" className="min-w-[548px] max-h-[349px]" />
+            <img
+              src={productData?.productImages[4]}
+              alt=""
+              className="min-w-[548px] max-h-[349px]"
+            />
           </div>
         </div>
 
@@ -69,15 +105,19 @@ const Products = () => {
             <span className=" leading-5 text-sm ">11 Reviews</span>
           </div>
 
-          <h2 className="font-medium text-4xl leading-10">Tray Table</h2>
+          <h2 className="font-medium text-4xl leading-10">
+            {productData?.productTitle}
+          </h2>
           <p className=" w-[508px] h-[78px] text-base leading-7">
-            Buy one or buy a few and make every space where you sit more
-            convenient. Light and easy to move around with removable tray top,
-            handy for serving snacks.
+            {productData?.productDescription}
           </p>
           <div className="flex items-center gap-16 font-medium text-3xl leading-8">
-            <p className="w-[56px] h-[22px]">$199.00</p>
-            <strike className="text-gray-500 mt-2">$400.00</strike>
+            <p className="w-[56px] h-[22px]">
+              ${productData?.discountPrice}.00
+            </p>
+            <strike className="text-gray-500 mt-2">
+              ${productData?.originalPrice}.00
+            </strike>
           </div>
 
           <div className="w-full h-[1px] bg-gray-300"></div>
@@ -86,7 +126,7 @@ const Products = () => {
               Measurements
             </p>
             <p className="w-[140px] h-[26px] font-semibold leading-8 text-xl ">
-              17 1/2x20 5/8 "
+              {productData?.measurements} "
             </p>
           </div>
           <div className=" flex flex-col gap-3">
@@ -143,6 +183,7 @@ const Products = () => {
           <button
             type="submit"
             className="bg-slate-950 w-[508px] h-[52px] hover:bg-slate-800 text-white font-bold py-2 mt-5 px-4 rounded-lg focus:outline-none focus:shadow-outline "
+            onClick={() => dispatch(addToCart(productData))}
           >
             Add to Cart
           </button>

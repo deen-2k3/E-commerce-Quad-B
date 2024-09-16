@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { RiCouponLine } from "react-icons/ri";
 
 import AllCart from "../components/AllCart";
 const Cart = () => {
+  
   
 
   return (

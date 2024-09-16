@@ -24,7 +24,7 @@ function Navbar({ user, setUser }) {
   };
   return (
     <div className="  relative w-full mx-auto flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700">
-      <div className="flex w-[100px] md:w-11/12 max-w-maxContent items-center justify-between">
+      <div className="flex w-[100px] md:w-11/12 max-w-maxContent items-center justify-between gap-24">
         {/* Logo */}
         <Link
           to="/"
@@ -47,18 +47,21 @@ function Navbar({ user, setUser }) {
             >
               Shop
             </Link>
-            <Link
-              to={"/product"}
-              className=" h-[24px] text-sm	leading-6 font-medium text-gray-900	"
-            >
-              Product
-            </Link>
-            <Link
-              to={"/contact-us"}
-              className=" h-[24px] text-sm leading-6 font-medium text-gray-900	"
-            >
-              Contact Us
-            </Link>
+            {user?.role === "admin" ? (
+              <Link
+                to={"/admin/addproduct"}
+                className=" h-[24px] text-sm leading-6 font-medium text-gray-900	"
+              >
+                Add Product
+              </Link>
+            ) : (
+              <Link
+                to={"/contact-us"}
+                className=" h-[24px] text-sm leading-6 font-medium text-gray-900	"
+              >
+                Contact Us
+              </Link>
+            )}
           </ul>
         </nav>
 

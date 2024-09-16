@@ -18,6 +18,7 @@ import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
 import NavCart from "./components/NavCart";
 import Complete from "./components/Complete";
+import Error from "./pages/Error";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,6 +30,8 @@ function App() {
     if (storedUser) {
       setUser(JSON.parse(storedUser)); // Parse the string to an object
     }
+
+    window.scroll(0, 0);
 
     fetchData();
   }, []); //
@@ -57,13 +60,24 @@ function App() {
           element={<ShopPage products={products} />}
         />
         <Route path="/contact-us" element={<ContactUsPage />} />
-        <Route path="/product" element={<Products />} />
-        <Route path="/addproduct" element={<AddProdduct />} />
+        <Route
+          path="/product/:productId"
+          element={<Products products={products} />}
+        />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/checkout-details" element={<CheckOut />} />
         <Route path="/navcart" element={<NavCart />} />
         <Route path="/complete" element={<Complete />} />
+
+        {user?.role === "admin" && (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="/admin/addproduct" element={<AddProdduct />} />
+          </>
+        )}
+        <Route path="*" element={<Error />} />
       </Routes>
+
       <NewsLetter />
       <Footer />
     </div>

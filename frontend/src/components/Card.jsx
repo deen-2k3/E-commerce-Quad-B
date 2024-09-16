@@ -5,6 +5,7 @@ import { FaHeart } from "react-icons/fa";
 import {toast} from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import {addToCart} from "../slices/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const firstExample = {
   size: 20,
@@ -15,6 +16,7 @@ const firstExample = {
 const Card = ({ product }) => {
   const [heart, SetHeart] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const addCartclickHandler = () => {
     if(!localStorage.getItem("person")){
@@ -22,10 +24,11 @@ const Card = ({ product }) => {
       return ;
     }
     dispatch(addToCart(product));
+
   };
 
   return (
-    <div className=" relative max-w-[262px] max-h-[800px] border-blue-500 group">
+    <div className=" relative max-w-[262px] max-h-[800px] border-blue-500 group" onClick={()=>navigate(`/product/${product._id}`)}>
       <img
         src={product?.productImages[0]}
         alt=""

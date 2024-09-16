@@ -61,6 +61,7 @@ const CheckOut = () => {
                     id=""
                     placeholder="  First name"
                     className="border border-1 w-[285.5px] h-[40px]  border-[#CBCBCB] rounded-md"
+                    required
                   />
                 </div>
                 <div className="flex flex-col ml-5">
@@ -76,6 +77,7 @@ const CheckOut = () => {
                     id=""
                     placeholder=" Last name"
                     className="border border-1 w-[285.5px] h-[40px]  border-[#CBCBCB] rounded-md "
+                    required
                   />
                 </div>
               </div>
@@ -93,6 +95,7 @@ const CheckOut = () => {
                   id=""
                   placeholder="  Phone number"
                   className="border border-1 w-[595px] h-[40px]  border-[#CBCBCB] rounded-md"
+                  required
                 />
               </div>
               <div className="ml-5 mt-3">
@@ -109,6 +112,7 @@ const CheckOut = () => {
                   id=""
                   placeholder="  Your Email"
                   className="border border-1 w-[595px] h-[40px]  border-[#CBCBCB] rounded-md"
+                  required
                 />
               </div>
             </div>
@@ -134,6 +138,7 @@ const CheckOut = () => {
                   id=""
                   placeholder="  Stress Address"
                   className="border border-1 w-[595px] h-[40px]  border-[#CBCBCB] rounded-md"
+                  required
                 />
               </div>
               <div className="ml-5 mt-3">
@@ -150,6 +155,7 @@ const CheckOut = () => {
                   id=""
                   placeholder="  Country"
                   className="border border-1 w-[595px] h-[40px]  border-[#CBCBCB] rounded-md"
+                  required
                 />
               </div>
               <div className="ml-5 mt-3">
@@ -166,6 +172,7 @@ const CheckOut = () => {
                   id=""
                   placeholder="  Town/City"
                   className="border border-1 w-[595px] h-[40px]  border-[#CBCBCB] rounded-md"
+                  required
                 />
               </div>
               <div className="flex w-[595px] h-[64px] mb-5 mt-5">
@@ -182,6 +189,7 @@ const CheckOut = () => {
                     id=""
                     placeholder="  State"
                     className="border border-1 w-[285.5px] h-[40px]  border-[#CBCBCB] rounded-md"
+                    required
                   />
                 </div>
                 <div className="flex flex-col ml-5 ">
@@ -197,6 +205,7 @@ const CheckOut = () => {
                     id=""
                     placeholder=" Zip Code"
                     className="border border-1 w-[285.5px] h-[40px]  border-[#CBCBCB] rounded-md "
+                    required
                   />
                 </div>
               </div>
