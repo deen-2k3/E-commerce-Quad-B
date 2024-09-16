@@ -27,7 +27,6 @@ function SignUp() {
   };
 
   const submitHandler = async (event) => {
-
     event.preventDefault();
 
     if (!agreeTerms) {
@@ -39,7 +38,7 @@ function SignUp() {
     try {
       const res = await apiConnector("POST", signupUrl, data);
       toast.success(res.data.message);
-      navigate('/nlogin')
+      navigate("/login");
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
