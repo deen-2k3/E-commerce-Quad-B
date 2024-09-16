@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # E-Commerce Application
 *Overview*
 
@@ -195,3 +196,6 @@ JWT_SECRET=your_jwt_secret
 ## Contributing
 
 Feel free to fork this repository and submit pull requests. For any issues or feature requests, please open an issue on GitHub.
+=======
+# E-commerce-Quad-B
+>>>>>>> origin/main
