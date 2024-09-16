@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # E-Commerce Application
 *Overview*
 
