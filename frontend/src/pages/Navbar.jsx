@@ -7,10 +7,12 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { resetCart } from "../slices/cartSlice";
+import NavCart from "../components/NavCart";
 
 function Navbar({ user, setUser }) {
   const [search, setSearch] = useState(true);
   const [modal, setModal] = useState(false);
+  const [cartModal, setCartModal] = useState(false);
   const { totalItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ function Navbar({ user, setUser }) {
     setModal(false);
   };
   return (
-    <div className="relative w-full mx-auto flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700">
+    <div className="  relative w-full mx-auto flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700">
       <div className="flex w-[100px] md:w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link
@@ -87,20 +89,23 @@ function Navbar({ user, setUser }) {
             ) : (
               <CiSearch size={20} onClick={() => setSearch(!search)} />
             )}
-            <div className=" relative">
+            <div
+              className=" relative cursor-pointer "
+              onClick={() => setCartModal(true)}
+            >
               <BsMinecart size={20} />
               <p className=" absolute bottom-5 -right-1 bg-orange-400  rounded-full h-4 w-4 p-2 flex items-center justify-center">
                 {totalItems}
               </p>
             </div>
             <div
-              className="flex gap-2 items-center justify-center"
+              className="flex gap-2 items-center justify-center cursor-pointer"
               onClick={() => setModal(!modal)}
             >
               <img
                 src={user.profilePhoto}
                 alt=""
-                className="w-[25px] h-[25px] cursor-pointer rounded-full"
+                className="w-[25px] h-[25px]  rounded-full"
               />
 
               {modal ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -115,6 +120,13 @@ function Navbar({ user, setUser }) {
         >
           <p className="text-xl font-semibold leading-7">Log Out</p>
           <IoLogOutOutline size={25} />
+        </div>
+      )}
+
+      {cartModal && (
+        <div className=" absolute top-16 right-6 z-50 bg-slate-100 rounded-md">
+          {" "}
+          <NavCart setCartModal={setCartModal} />
         </div>
       )}
     </div>
