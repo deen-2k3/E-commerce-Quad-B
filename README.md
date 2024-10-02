@@ -3,12 +3,6 @@
 *Overview*
 
 
-## Contributors
-
-- *Deen Bandhu Singh* [GitHub Profile](https://github.com/deen-2k3)
-- *Nitish Kumar* [GitHub Profile](https://github.com/nitish76kumar)
-- *Ramavtar Kumar Yadav* [GitHub Profile](https://github.com/ramavtar8250)
-- *Sudhanshu Shekhar* [GitHub Profile](https://github.com/Sudhanshu7589)
 
 
 This project is a basic e-commerce application demonstrating proficiency in both frontend and backend development. It includes user authentication, product listing, and a shopping cart. The application integrates a MongoDB database and provides a RESTful API with secure endpoints using Node.js and Express.
